@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Area, AreaChart } from "recharts"
+import { XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Area, AreaChart } from "recharts"
 import { cn } from "@/lib/utils"
 
 const dataThisMonth = [
@@ -105,14 +105,14 @@ export function RevenueChart() {
                   boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
                 }}
               />
-              <Area type="monotone" dataKey="revenue" stroke="#000000" strokeWidth={2} fill="url(#revenueGradient)" />
-              <Line
+              <Area
                 type="monotone"
                 dataKey="revenue"
                 stroke="#000000"
                 strokeWidth={2}
                 dot={{ fill: "#000000", strokeWidth: 0, r: 4 }}
                 activeDot={{ r: 6, fill: "#000000" }}
+                fill="url(#revenueGradient)"
               />
             </AreaChart>
           </ResponsiveContainer>
