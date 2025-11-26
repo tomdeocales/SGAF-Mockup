@@ -34,3 +34,6 @@ pnpm-debug.log*
 .idea/
 *.swp
 *.swo
+
+# TypeScript build info
+tsconfig.tsbuildinfo

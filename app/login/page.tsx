@@ -84,7 +84,12 @@ export default function LoginPage() {
           </div>
 
           {/* Login Form */}
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form
+            onSubmit={(event) => {
+              void handleLogin(event)
+            }}
+            className="space-y-6"
+          >
             {error && (
               <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-3 text-sm text-destructive">
                 {error}

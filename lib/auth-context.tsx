@@ -3,12 +3,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import { useRouter, usePathname } from "next/navigation"
 
-// Mock credentials
-const MOCK_CREDENTIALS = {
-  email: "demo@sgaf.com",
-  password: "demo123",
-}
-
 interface User {
   name: string
   email: string
@@ -34,7 +28,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const storedUser = localStorage.getItem("sgaf_user")
     if (storedUser) {
-      setUser(JSON.parse(storedUser))
+      try {
+        const parsedUser = JSON.parse(storedUser) as User
+        setUser(parsedUser)
+      } catch (error) {
+        console.error("Failed to parse stored user", error)
+        localStorage.removeItem("sgaf_user")
+      }
     }
     setIsLoading(false)
   }, [])
